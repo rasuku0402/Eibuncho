@@ -13,6 +13,7 @@
 		507D230E2A94B1B00093DF50 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 507D230C2A94B1B00093DF50 /* Main.storyboard */; };
 		507D23102A94B1B20093DF50 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 507D230F2A94B1B20093DF50 /* Assets.xcassets */; };
 		507D23132A94B1B20093DF50 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 507D23112A94B1B20093DF50 /* LaunchScreen.storyboard */; };
+		A93924A22AAC21B6005614B9 /* AddSentenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93924A12AAC21B6005614B9 /* AddSentenceViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		507D230F2A94B1B20093DF50 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		507D23122A94B1B20093DF50 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		507D23142A94B1B20093DF50 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A93924A12AAC21B6005614B9 /* AddSentenceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSentenceViewController.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 		507D23052A94B1B00093DF50 /* Noname */ = {
 			isa = PBXGroup;
 			children = (
+				A93924A12AAC21B6005614B9 /* AddSentenceViewController.swift */,
 				507D23062A94B1B00093DF50 /* AppDelegate.swift */,
 				507D23082A94B1B00093DF50 /* SceneDelegate.swift */,
 				507D230A2A94B1B00093DF50 /* ViewController.swift */,
@@ -143,6 +146,7 @@
 				507D230B2A94B1B00093DF50 /* ViewController.swift in Sources */,
 				507D23072A94B1B00093DF50 /* AppDelegate.swift in Sources */,
 				507D23092A94B1B00093DF50 /* SceneDelegate.swift in Sources */,
+				A93924A22AAC21B6005614B9 /* AddSentenceViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
