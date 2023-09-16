@@ -70,7 +70,7 @@ public class OpenAIClient {
                 return
             }
             if let string = String(data: data, encoding: .utf8) {
-                print(string) // "Hello"
+                print(string)
             }
             // レスポンスを処理
             do {
