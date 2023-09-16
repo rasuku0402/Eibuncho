@@ -15,9 +15,13 @@
 		507D23132A94B1B20093DF50 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 507D23112A94B1B20093DF50 /* LaunchScreen.storyboard */; };
 		A93924A22AAC21B6005614B9 /* AddSentenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93924A12AAC21B6005614B9 /* AddSentenceViewController.swift */; };
 		A93924A62AAC4E92005614B9 /* TranslateByOpenAI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93924A52AAC4E92005614B9 /* TranslateByOpenAI.swift */; };
-		A93924A82AAC50F2005614B9 /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = A93924A72AAC50F2005614B9 /* config.plist */; };
 		A93924AA2AAE3D9D005614B9 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93924A92AAE3D9C005614B9 /* CreateAccountViewController.swift */; };
-		A93924AC2AB30BAC005614B9 /* DBofSectences.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93924AB2AB30BAC005614B9 /* DBofSectences.swift */; };
+		A93924AC2AB30BAC005614B9 /* SentencesDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93924AB2AB30BAC005614B9 /* SentencesDB.swift */; };
+		A93924AE2AB3198E005614B9 /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = A93924AD2AB3198E005614B9 /* config.plist */; };
+		A93924B02AB31B6B005614B9 /* SentenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93924AF2AB31B6B005614B9 /* SentenceViewController.swift */; };
+		A93924B22AB35966005614B9 /* UseridDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93924B12AB35966005614B9 /* UseridDB.swift */; };
+		A93924B42AB3889B005614B9 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93924B32AB3889B005614B9 /* TabBarController.swift */; };
+		A93924B62AB43B76005614B9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93924B52AB43B76005614B9 /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,9 +36,13 @@
 		507D23142A94B1B20093DF50 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A93924A12AAC21B6005614B9 /* AddSentenceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSentenceViewController.swift; sourceTree = SOURCE_ROOT; };
 		A93924A52AAC4E92005614B9 /* TranslateByOpenAI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateByOpenAI.swift; sourceTree = SOURCE_ROOT; };
-		A93924A72AAC50F2005614B9 /* config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = config.plist; sourceTree = SOURCE_ROOT; };
 		A93924A92AAE3D9C005614B9 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
-		A93924AB2AB30BAC005614B9 /* DBofSectences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBofSectences.swift; sourceTree = SOURCE_ROOT; };
+		A93924AB2AB30BAC005614B9 /* SentencesDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentencesDB.swift; sourceTree = SOURCE_ROOT; };
+		A93924AD2AB3198E005614B9 /* config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = config.plist; sourceTree = SOURCE_ROOT; };
+		A93924AF2AB31B6B005614B9 /* SentenceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentenceViewController.swift; sourceTree = SOURCE_ROOT; };
+		A93924B12AB35966005614B9 /* UseridDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseridDB.swift; sourceTree = SOURCE_ROOT; };
+		A93924B32AB3889B005614B9 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = SOURCE_ROOT; };
+		A93924B52AB43B76005614B9 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,9 +75,13 @@
 		507D23052A94B1B00093DF50 /* Noname */ = {
 			isa = PBXGroup;
 			children = (
-				A93924AB2AB30BAC005614B9 /* DBofSectences.swift */,
+				A93924B52AB43B76005614B9 /* HomeViewController.swift */,
+				A93924B32AB3889B005614B9 /* TabBarController.swift */,
+				A93924B12AB35966005614B9 /* UseridDB.swift */,
+				A93924AF2AB31B6B005614B9 /* SentenceViewController.swift */,
+				A93924AD2AB3198E005614B9 /* config.plist */,
+				A93924AB2AB30BAC005614B9 /* SentencesDB.swift */,
 				A93924A92AAE3D9C005614B9 /* CreateAccountViewController.swift */,
-				A93924A72AAC50F2005614B9 /* config.plist */,
 				A93924A52AAC4E92005614B9 /* TranslateByOpenAI.swift */,
 				A93924A12AAC21B6005614B9 /* AddSentenceViewController.swift */,
 				507D23062A94B1B00093DF50 /* AppDelegate.swift */,
@@ -142,7 +154,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A93924A82AAC50F2005614B9 /* config.plist in Resources */,
+				A93924AE2AB3198E005614B9 /* config.plist in Resources */,
 				507D23132A94B1B20093DF50 /* LaunchScreen.storyboard in Resources */,
 				507D23102A94B1B20093DF50 /* Assets.xcassets in Resources */,
 				507D230E2A94B1B00093DF50 /* Main.storyboard in Resources */,
@@ -159,10 +171,14 @@
 				A93924AA2AAE3D9D005614B9 /* CreateAccountViewController.swift in Sources */,
 				507D230B2A94B1B00093DF50 /* ViewController.swift in Sources */,
 				A93924A62AAC4E92005614B9 /* TranslateByOpenAI.swift in Sources */,
+				A93924B42AB3889B005614B9 /* TabBarController.swift in Sources */,
+				A93924B02AB31B6B005614B9 /* SentenceViewController.swift in Sources */,
 				507D23072A94B1B00093DF50 /* AppDelegate.swift in Sources */,
 				507D23092A94B1B00093DF50 /* SceneDelegate.swift in Sources */,
-				A93924AC2AB30BAC005614B9 /* DBofSectences.swift in Sources */,
+				A93924B62AB43B76005614B9 /* HomeViewController.swift in Sources */,
+				A93924AC2AB30BAC005614B9 /* SentencesDB.swift in Sources */,
 				A93924A22AAC21B6005614B9 /* AddSentenceViewController.swift in Sources */,
+				A93924B22AB35966005614B9 /* UseridDB.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
