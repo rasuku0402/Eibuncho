@@ -69,6 +69,38 @@ public class UseridDB {
     }
     
     
+    // ログアウト
+    func logOut(completion: @escaping (Result<String, Error>) -> Void) {
+        let endpoint = "http://52.199.139.250:8080/logout"
+        
+        // HTTPリクエスト用のURLを作成
+        guard let url = URL(string: endpoint) else {
+            completion(.failure(APIError.invalidURL))
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        
+        // HTTPメソッドを設定
+        request.httpMethod = "POST"
+        
+        // リクエストヘッダー
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        // リクエストを送信し、非同期でレスポンスを取得
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let error = error {
+                completion(.failure(error))
+                return
+            } else {
+                completion(.success("logout success!"))
+            }
+        }
+        
+        task.resume()
+    }
+    
+    
     
     enum APIError: Error {
         case invalidURL

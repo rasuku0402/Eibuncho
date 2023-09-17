@@ -22,6 +22,7 @@
 		A93924B22AB35966005614B9 /* UseridDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93924B12AB35966005614B9 /* UseridDB.swift */; };
 		A93924B42AB3889B005614B9 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93924B32AB3889B005614B9 /* TabBarController.swift */; };
 		A93924B62AB43B76005614B9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93924B52AB43B76005614B9 /* HomeViewController.swift */; };
+		A95309672AB6E1B600340AD1 /* DetailSentenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95309662AB6E1B500340AD1 /* DetailSentenceViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		A93924B12AB35966005614B9 /* UseridDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseridDB.swift; sourceTree = SOURCE_ROOT; };
 		A93924B32AB3889B005614B9 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = SOURCE_ROOT; };
 		A93924B52AB43B76005614B9 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = SOURCE_ROOT; };
+		A95309662AB6E1B500340AD1 /* DetailSentenceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSentenceViewController.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,7 @@
 		507D23052A94B1B00093DF50 /* Noname */ = {
 			isa = PBXGroup;
 			children = (
+				A95309662AB6E1B500340AD1 /* DetailSentenceViewController.swift */,
 				A93924B52AB43B76005614B9 /* HomeViewController.swift */,
 				A93924B32AB3889B005614B9 /* TabBarController.swift */,
 				A93924B12AB35966005614B9 /* UseridDB.swift */,
@@ -168,6 +171,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A95309672AB6E1B600340AD1 /* DetailSentenceViewController.swift in Sources */,
 				A93924AA2AAE3D9D005614B9 /* CreateAccountViewController.swift in Sources */,
 				507D230B2A94B1B00093DF50 /* ViewController.swift in Sources */,
 				A93924A62AAC4E92005614B9 /* TranslateByOpenAI.swift in Sources */,

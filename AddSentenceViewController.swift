@@ -14,6 +14,9 @@ class AddSentenceViewController: UIViewController {
     @IBOutlet weak var englishSentence: UIScrollView!
     @IBOutlet weak var addButton: UIButton!
     
+    var userid = UInt()
+    let label = UILabel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -58,10 +61,20 @@ class AddSentenceViewController: UIViewController {
             switch result {
             case .success(let translatedText):
                 displayedText = translatedText
-                print("翻訳結果: \(translatedText)")
+                print("translate success!")
+                // メインスレッドで実行
+                DispatchQueue.main.async {
+                    // 追加ボタンを有効化
+                    self.addButton.isEnabled = true
+                }
             case .failure(let error):
                 displayedText = "error"
-                print("APIエラー: \(error)")
+                print("エラー: \(error)")
+                // メインスレッドで実行
+                DispatchQueue.main.async {
+                    // 追加ボタンを無効化
+                    self.addButton.isEnabled = false
+                }
             }
             
             semaphore.signal() // 非同期処理が完了したことを通知
@@ -70,7 +83,7 @@ class AddSentenceViewController: UIViewController {
         // 非同期処理が完了するまで待機
         _ = semaphore.wait(timeout: .distantFuture)
         
-        let label = UILabel()
+        
         label.text = displayedText
         label.numberOfLines = 0 // 複数行のテキストをサポート
         label.frame = CGRect(x: 0, y: 0, width: englishSentence.frame.width, height: 0)
@@ -82,18 +95,24 @@ class AddSentenceViewController: UIViewController {
         // キーボードを閉じる
         japaneseSentence.resignFirstResponder()
         
-        // 追加ボタンを有効化
-        addButton.isEnabled = true
     }
     
     @IBAction func tapAddButton(_ sender: UIButton) {
         // ここにデータベースへ追加するコードを記述する
-        
+        let sentencesDB = SentencesDB()
+        sentencesDB.addSentence(userid: userid, ja_prompt: japaneseSentence.text!, en_prompt: label.text!) { result in
+            switch result {
+            case .success(let result):
+                print("\(result)")
+
+            case .failure(let error):
+                print("エラー: \(error)")
+            }
+        }
         
         //テキストボックスに空文字を入れる
         self.japaneseSentence.text = ""
         englishSentence.subviews.forEach { $0.removeFromSuperview() }
-//        self.englishSentence.text = ""
     }
     
 

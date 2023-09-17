@@ -10,7 +10,7 @@ import Foundation
 public class SentencesDB {
     
     // 例文新規登録
-    func addSentence(userid: String, ja_prompt: String, en_prompt: String, completion: @escaping (Result<String, Error>) -> Void) {
+    func addSentence(userid: UInt, ja_prompt: String, en_prompt: String, completion: @escaping (Result<String, Error>) -> Void) {
         let endpoint = "http://52.199.139.250:8080/\(userid)/sentences"
         
         // HTTPリクエスト用のURLを作成
@@ -23,6 +23,9 @@ public class SentencesDB {
         
         // HTTPメソッドを設定（POSTリクエストの場合）
         request.httpMethod = "POST"
+        
+        // リクエストヘッダー
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
         // リクエストボディ
         let parameters: [String: Any] = [
@@ -38,26 +41,8 @@ public class SentencesDB {
             if let error = error {
                 completion(.failure(error))
                 return
-            }
-            
-            guard let data = data else {
-                completion(.failure(APIError.noDataReceived))
-                return
-            }
-            if let string = String(data: data, encoding: .utf8) {
-                print(string)
-            }
-            // レスポンスを処理
-            do {
-                if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
-                   let translations = json["translations"] as? [[String: Any]],
-                   let translatedText = translations.first?["text"] as? String {
-                    completion(.success(translatedText))
-                } else {
-                    completion(.failure(APIError.invalidResponse))
-                }
-            } catch {
-                completion(.failure(error))
+            } else {
+                completion(.success("add sentence success!"))
             }
         }
         
@@ -66,7 +51,7 @@ public class SentencesDB {
     
     
     // 例文一覧取得
-    func getSentences(userid: UInt, completion: @escaping (Result<[[String: Any]], Error>) -> Void) {
+    func getSentences(userid: UInt, completion: @escaping (Result<[SentenceSet], Error>) -> Void) {
         let endpoint = "http://52.199.139.250:8080/\(userid)/sentences"
         print(endpoint)
         
@@ -92,12 +77,13 @@ public class SentencesDB {
                 completion(.failure(APIError.noDataReceived))
                 return
             }
-            if let string = String(data: data, encoding: .utf8) {
-                print(string)
-            }
+//            if let string = String(data: data, encoding: .utf8) {
+//                print(string)
+//            }
 //            // レスポンスを処理
             do {
-                if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [[String: Any]] {
+//                if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [SentenceSet] {
+                if let json = try? JSONDecoder().decode([SentenceSet].self, from: data) {
                     completion(.success(json))
                 } else {
                     completion(.failure(APIError.invalidResponse))
@@ -116,4 +102,13 @@ public class SentencesDB {
         case noDataReceived
         case invalidResponse
     }
+}
+
+
+struct SentenceSet: Codable {
+    let sentenceid: UInt
+    let japanese_sen: String
+    let english_sen: String
+    let created_at: String
+    let updated_at: String
 }
