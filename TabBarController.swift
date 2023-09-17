@@ -22,7 +22,8 @@ class TabBarController: UITabBarController {
             vc.userid = userid
         }
         // SentenceViewへuserIDを渡す
-        if let vc = self.viewControllers?[1] as? SentenceViewController {
+        if let nc = self.viewControllers?[1] as? UINavigationController,
+           let vc = nc.viewControllers[0] as? SentenceViewController {
             vc.userid = userid
         }
         // WordViewへuserIDを渡す

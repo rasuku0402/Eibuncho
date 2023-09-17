@@ -16,8 +16,9 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var pass: UITextField!
-    @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var errorMsg: UILabel!
+    @IBOutlet weak var loginButton: UIButton!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,12 +49,22 @@ class ViewController: UIViewController {
                     let tc = self.storyboard?.instantiateViewController(withIdentifier: "TabBarID") as! TabBarController
                     tc.userid = result
                     self.present(tc, animated: true, completion: nil) // 渡して遷移する
+                    
+                    // ログアウト用にテキストボックスとボタンを初期化
+                    self.email.text = ""
+                    self.pass.text = ""
+                    self.errorMsg.text = ""
+                    self.loginButton.isEnabled = false
                 }
 
             case .failure(let error):
-                print("APIエラー: \(error)")
+                print("エラー: \(error)")
+                DispatchQueue.main.async {
+                    self.errorMsg.text = "E-mail または Passwordが違います。"
+                }
             }
         }
+        // 画面遷移
 //        self.performSegue(withIdentifier: "toLogIn", sender: nil)
     }
     
