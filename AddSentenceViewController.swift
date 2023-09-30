@@ -100,7 +100,7 @@ class AddSentenceViewController: UIViewController {
     @IBAction func tapAddButton(_ sender: UIButton) {
         // ここにデータベースへ追加するコードを記述する
         let sentencesDB = SentencesDB()
-        sentencesDB.addSentence(userid: userid, ja_prompt: japaneseSentence.text!, en_prompt: label.text!) { result in
+        sentencesDB.addSentence(userid: self.userid, ja_prompt: japaneseSentence.text!, en_prompt: label.text!) { result in
             switch result {
             case .success(let result):
                 print("\(result)")

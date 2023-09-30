@@ -12,6 +12,7 @@ public class SentencesDB {
     // 例文新規登録
     func addSentence(userid: UInt, ja_prompt: String, en_prompt: String, completion: @escaping (Result<String, Error>) -> Void) {
         let endpoint = "http://52.199.139.250:8080/\(userid)/sentences"
+        print(endpoint)
         
         // HTTPリクエスト用のURLを作成
         guard let url = URL(string: endpoint) else {
@@ -21,7 +22,7 @@ public class SentencesDB {
         
         var request = URLRequest(url: url)
         
-        // HTTPメソッドを設定（POSTリクエストの場合）
+        // HTTPメソッドを設定
         request.httpMethod = "POST"
         
         // リクエストヘッダー
@@ -32,6 +33,7 @@ public class SentencesDB {
             "japanese_sen": "\(ja_prompt)",
             "english_sen": "\(en_prompt)"
         ]
+        print(parameters)
 
         let jsonBody = try? JSONSerialization.data(withJSONObject: parameters)
         request.httpBody = jsonBody
@@ -53,7 +55,6 @@ public class SentencesDB {
     // 例文一覧取得
     func getSentences(userid: UInt, completion: @escaping (Result<[SentenceSet], Error>) -> Void) {
         let endpoint = "http://52.199.139.250:8080/\(userid)/sentences"
-        print(endpoint)
         
         // HTTPリクエスト用のURLを作成
         guard let url = URL(string: endpoint) else {
@@ -95,6 +96,37 @@ public class SentencesDB {
         
         task.resume()
     }
+    
+    
+    // 例文削除
+    func deleteSentences(userid: UInt, sentenceid: UInt, completion: @escaping (Result<String, Error>) -> Void) {
+        let endpoint = "http://52.199.139.250:8080/\(userid)/sentences/\(sentenceid)"
+        
+        // HTTPリクエスト用のURLを作成
+        guard let url = URL(string: endpoint) else {
+            completion(.failure(APIError.invalidURL))
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        
+        // HTTPメソッドを設定
+        request.httpMethod = "DELETE"
+        
+        // リクエストを送信し、非同期でレスポンスを取得
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let error = error {
+                completion(.failure(error))
+                return
+            } else {
+                completion(.success("delete sentence success!"))
+            }
+        }
+        
+        task.resume()
+    }
+    
+    
 
     enum APIError: Error {
         case invalidURL

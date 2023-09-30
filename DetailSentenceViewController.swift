@@ -13,7 +13,9 @@ class DetailSentenceViewController: UIViewController {
     @IBOutlet weak var displayJaSentence: UIScrollView!
     @IBOutlet weak var displayEnSentence: UIScrollView!
     @IBOutlet weak var displayAddDate: UILabel!
+    @IBOutlet weak var deleteSentenceButton: UIButton!
     var sentenceDetail:SentenceSet?
+    var userid = UInt()
     
     let jaLabel = UILabel()
     let enLabel = UILabel()
@@ -69,6 +71,36 @@ class DetailSentenceViewController: UIViewController {
         }
     }
     
+    
+    @IBAction func tapDeleteButton(_ sender: UIButton) {
+
+        
+        let alertController = UIAlertController(title: "確認", message: "本当に削除しますか？", preferredStyle: .alert)
+
+        // "はい" ボタン
+        let yesAction = UIAlertAction(title: "削除", style: .destructive) { (_) in
+            let sentencesDB = SentencesDB()
+            sentencesDB.deleteSentences(userid: self.userid, sentenceid: self.sentenceDetail!.sentenceid) { result in
+                switch result {
+                case .success(let result):
+                    print("\(result)")
+
+                case .failure(let error):
+                    print("エラー: \(error)")
+                }
+            }
+        }
+
+        // "キャンセル" ボタン
+        let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel, handler: nil)
+
+        alertController.addAction(yesAction)
+        alertController.addAction(cancelAction)
+
+        // アラートを表示
+        self.present(alertController, animated: true, completion: nil)
+
+    }
 
     /*
     // MARK: - Navigation
