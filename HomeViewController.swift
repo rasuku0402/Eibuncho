@@ -32,12 +32,16 @@ class HomeViewController: UIViewController {
         self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func tapAddSentenceScreenButton(_ sender: UIButton) {
-        // AddSentenceViewControllerへuserIDを渡す
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "AddSentenceViewID") as! AddSentenceViewController
-        vc.userid = self.userid
-        self.present(vc, animated: true, completion: nil) // 渡して遷移する
+    // データを詳細画面に渡す
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let addSentenceSentenceVC = segue.destination as? AddSentenceViewController {
+            addSentenceSentenceVC.userid = self.userid
+        }
     }
+    
+//    @IBAction func tapAddSentenceScreenButton(_ sender: UIButton) {
+//
+//    }
 
     /*
     // MARK: - Navigation

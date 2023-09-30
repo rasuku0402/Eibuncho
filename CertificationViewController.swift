@@ -1,39 +1,40 @@
 //
-//  CreateAccountViewController.swift
+//  CertificationViewController.swift
 //  Noname
 //
-//  Created by 釆山怜央 on 2023/09/11.
+//  Created by 釆山怜央 on 2023/09/30.
 //
 
 import UIKit
 
-class CreateAccountViewController: UIViewController {
+class CertificationViewController: UIViewController {
 
-    @IBOutlet weak var userName: UITextField!
-    @IBOutlet weak var email: UITextField!
-    @IBOutlet weak var pass: UITextField!
-    @IBOutlet weak var createAccountButton: UIButton!
-    
+    @IBOutlet weak var PINcode: UITextField!
+    @IBOutlet weak var certificationButton: UIButton!
+    @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var errorMsg: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        createAccountButton.isEnabled = false
+        PINcode.keyboardType = UIKeyboardType.numberPad
+        certificationButton.isEnabled = false
+        errorMsg.text = ""
     }
     
     // ボタンの有効化
-    @IBAction func createAccountBtnInactive(_ sender: Any) {
-        if email.text == "" || pass.text == "" {
-            createAccountButton.isEnabled = false
+    @IBAction func certificationBtnInactive(_ sender: Any) {
+        if PINcode.text == "" {
+            certificationButton.isEnabled = false
         } else {
-            createAccountButton.isEnabled = true
+            certificationButton.isEnabled = true
         }
     }
     
     // 画面遷移
     @IBAction func checkSignUp(_ sender: UIButton) {
         let useridDB = UseridDB()
-        useridDB.signUp(username: userName.text!, address: email.text!, password: pass.text!) { result in
+        useridDB.twiceCertification(pin: PINcode.text!) { result in
             switch result {
             case .success(let result):
                 print("\(result)")
@@ -41,20 +42,24 @@ class CreateAccountViewController: UIViewController {
                 // メインスレッドで実行
                 DispatchQueue.main.async {
                     // テキストボックスとボタンを初期化
-                    self.userName.text = ""
-                    self.email.text = ""
-                    self.pass.text = ""
-//                    self.createAccountButton.isEnabled = false
+                    self.PINcode.text = ""
+                    self.errorMsg.text = ""
+
+                    self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
                 }
 
             case .failure(let error):
                 print("エラー: \(error)")
+                
+                // メインスレッドで実行
+                DispatchQueue.main.async {
+                    // テキストボックスとボタンを初期化
+                    self.errorMsg.text = "PINコードが間違っているか、期限が切れています"
+                }
             }
         }
-        // 画面遷移
-//        self.performSegue(withIdentifier: "toLogIn", sender: nil)
     }
-    
+
     @IBAction func backBtnAction(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }

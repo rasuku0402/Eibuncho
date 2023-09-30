@@ -69,6 +69,7 @@ class SentenceViewController: UIViewController, UITableViewDelegate, UITableView
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let detailSentenceVC = segue.destination as? DetailSentenceViewController {
             detailSentenceVC.sentenceDetail = sender as? SentenceSet
+            detailSentenceVC.userid = self.userid
         }
     }
     
